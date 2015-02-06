@@ -1,0 +1,2 @@
+# tern-jshint
+Tern JSHint
