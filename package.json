@@ -13,8 +13,7 @@
     "test": "node ./test/all.js"
   },    
   "dependencies": {
-    "tern": ">=0.10.0",
-    "acorn": ">=1.0.0",
+    "tern": ">=0.15.0",
     "jshint": ">=2.6.0"
   }, 
   "devDependencies": { 
