@@ -57,20 +57,20 @@
 
   function normPath(name) { return name.replace(/\\/g, "/"); }
   
-  function loadConfig(file) {
+  function loadConfig(file, server) {
     var filepath = normPath(server.options.projectDir) + "/" + normPath(file);
     var config = cli.loadConfig(filepath);
     return config;
   }
   
-  function getConfig(options) {
+  function getConfig(server, options) {
     if (options.config) return options.config;
-    if (options.configFile) return loadConfig(options.configFile);
+    if (options.configFile) return loadConfig(options.configFile, server);
   }
   
   tern.registerPlugin("jshint", function(server, options) {
     // load JSHint config
-    var config = getConfig(options) || {}, globals;
+    var config = getConfig(server, options) || {}, globals;
     config = JSON.parse(JSON.stringify(config));
     if (config.globals) {
       globals = config.globals;
