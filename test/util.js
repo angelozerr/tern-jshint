@@ -32,7 +32,8 @@ var createServer = exports.createServer = function(defNames, options) {
     plugins['jshint'] = {};
   var server = new tern.Server({
     plugins : plugins,
-    defs : defs
+    defs : defs,
+    projectDir: projectDir
   });
   return server;
 }
