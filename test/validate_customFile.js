@@ -1,12 +1,16 @@
 var util = require("./util");
+var path = require("path");
+
+function normPath(name) { return name.replace(/\\/g, "//"); }
 
 exports['test unkkown .jshintrc'] = function() {
   
   // Unknown .jshintrc file
 
+  var file = normPath(path.resolve(__dirname, "..")) + "//XXX/.jshintrc";
   util.assertLint("var a = angular, b = XXX;", {
     messages : [{
-      "message" : "Cannot find JSHint config files ['XXX/.jshintrc', 'C://Users//azerr//git//tern-jshint//XXX/.jshintrc']",
+      "message" : "Cannot find JSHint config files ['XXX/.jshintrc', '" + file + "']",
       "severity" : "error",
       "from" : 0,
       "to" : 1,            
