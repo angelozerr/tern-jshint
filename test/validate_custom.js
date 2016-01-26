@@ -4,19 +4,19 @@ exports['test undef'] = function() {
   
   // Undef
   util.assertLint("var a = angular, b = XXX;", {
-          messages : [{
-            "message" : "'angular' is not defined.",
-            "severity" : "error",
-            "from" : 8,
-            "to" : 15,            
-            "file": "test1.js"},
-            {
-              "message" : "'XXX' is not defined.",
-              "severity" : "error",
-              "from" : 21,
-              "to" : 24,            
-              "file": "test1.js"}
-          ]
+    messages : [{
+      "message" : "'angular' is not defined.",
+      "severity" : "warning",
+      "from" : 8,
+      "to" : 15,            
+      "file": "test1.js"},
+      {
+        "message" : "'XXX' is not defined.",
+        "severity" : "warning",
+        "from" : 21,
+        "to" : 24,            
+        "file": "test1.js"}
+    ]
   }, null, {
     "config": {
       "undef": true
@@ -26,7 +26,7 @@ exports['test undef'] = function() {
   util.assertLint("var a = angular, b = XXX;", {
     messages : [{
       "message" : "'XXX' is not defined.",
-      "severity" : "error",
+      "severity" : "warning",
       "from" : 21,
       "to" : 24,            
       "file": "test1.js"}

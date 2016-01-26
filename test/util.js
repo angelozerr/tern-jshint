@@ -7,6 +7,7 @@ var projectDir = path.resolve(__dirname, "..");
 var resolve = function(pth) {
   return path.resolve(projectDir, pth);
 };
+
 var browser = JSON.parse(fs
     .readFileSync(resolve("node_modules/tern/defs/browser.json")), "utf8");
 var ecma5 = JSON.parse(fs
@@ -46,13 +47,14 @@ var assertLintReponse = exports.assertLintReponse = function(err, resp, expected
   assert.equal(JSON.stringify(resp), JSON.stringify(expected));
 }
 
-exports.assertLint = function(text, expected, defNames, options) {
+exports.assertLint = function(text, expected, defNames, options, filename) {
+  if (!filename) filename = "test1.js";
   var server = createServer(defNames, options);
-  server.addFile("test1.js", text);
+  server.addFile(filename, text);
   server.request({
     query : {
       type : "jshint",
-      file : "test1.js"
+      file : filename
     }
   }, function(err, resp) {
     assertLintReponse(err, resp, expected);
